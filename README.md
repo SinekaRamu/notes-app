@@ -22,5 +22,17 @@ how you create a new user's account, how you store those in a database, how to l
 - Now install the flask app `pip install Flask`
 - To check the version `python -m flask --version`
 - Install its dependencies
+
   - `pip install Flask-login`
   - `pip install Flask-sqlalchemy`
+
+## folders
+
+### init
+
+It creates the flask app, configured with secret key for the development environment.
+
+### views
+
+It contains the roots of the pages that we have in the projects like homepage, login page, so on.
+using blueprint module
