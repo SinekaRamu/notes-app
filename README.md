@@ -36,3 +36,11 @@ It creates the flask app, configured with secret key for the development environ
 
 It contains the roots of the pages that we have in the projects like homepage, login page, so on.
 using blueprint module
+
+### auth
+
+It contains the route for login, sign-up, logout
+
+## Database
+
+import databse in init file `from flask_sqlalchemy import SQLAlchemy`
