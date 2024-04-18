@@ -34,7 +34,7 @@ def sign_up():
 
             flash('Account created!', 'success ')
             return redirect(url_for('views.home'))
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user = current_user)
 
 
 # Function to validate email format
@@ -60,7 +60,7 @@ def login():
         else:
             flash('User not found', 'error')
 
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
 @login_required 
