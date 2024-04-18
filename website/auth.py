@@ -14,7 +14,10 @@ def sign_up():
         password = request.form.get('password1')
         confirmPassword = request.form.get('password2')
     
-        if not is_valid_email(email):
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash('Email already registered', 'error')
+        elif not is_valid_email(email):
             flash('Invalid email format', 'error')
         elif len(userName) < 3:
             flash('Username should be 8 characters long.', 'error')
@@ -40,10 +43,18 @@ def is_valid_email(email):
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form('email')
-        password = request.form('password1')
+        email = request.form.get('email')
+        password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Logged in Successfully!', 'success')
+                return redirect(url_for('views.home'))
+            else:
+                flash('Incorrect Password, try again?', 'error')
+        else:
+            flash('User not found', 'error')
 
     return render_template("login.html")
 
