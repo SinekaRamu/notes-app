@@ -43,4 +43,5 @@ It contains the route for login, sign-up, logout
 
 ## Database
 
-import databse in init file `from flask_sqlalchemy import SQLAlchemy`
+- import databse in init file `from flask_sqlalchemy import SQLAlchemy`
+- config the database with sqlite wiht dbname.
